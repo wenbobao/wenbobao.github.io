@@ -1,0 +1,71 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="iOS + Jenkins + SVN 自动化打包配置"><meta name="keywords" content="Jenkins"><meta name="author" content="wenbobao,undefined"><meta name="copyright" content="wenbobao"><title>iOS + Jenkins + SVN 自动化打包配置 | wenbobao's blog</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css?version=1.3"><script>var GLOBAL = { 
+  root: '/',
+  algolia: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  localSearch: undefined
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤"><span class="toc-number">2.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安全设置"><span class="toc-number">3.</span> <span class="toc-text">安全设置</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="http://owik45kut.bkt.clouddn.com/hexo_avatar.jpg"></div><div class="author-info__name text-center">wenbobao</div><div class="author-info__description text-center">如果我们想的都是欢乐的念头，我们就能欢乐。</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">14</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">34</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container" style="background-image: url(true);"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">wenbobao's blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">iOS + Jenkins + SVN 自动化打包配置</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2016-04-11</time><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2016/04/11/iOS_Jenkins_SVN自动化打包配置/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2016/04/11/iOS_Jenkins_SVN自动化打包配置/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">576</span><span class="post-meta__separator">|</span><span>Reading time: 3 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div id="post-content"><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ol>
+<li>下载Jenkins.war<br> <a href="https://jenkins.io/download/" target="_blank" rel="noopener">https://jenkins.io/download/</a></li>
+<li>JDK 1.80</li>
+<li>tomcat7.0</li>
+</ol>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
+<li>将jenkins.war部署到tomcat中，启动tomcat</li>
+<li>浏览器中输入 <a href="http://localhost:8080/jenkins/" target="_blank" rel="noopener">http://localhost:8080/jenkins/</a></li>
+<li><p>安装jenkins插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. Xcode integration: iOS专用</span><br><span class="line">2. Keychains and Provisioning Profiles Management</span><br><span class="line">3. Subversion Plug-in SVN </span><br><span class="line">4. SSH Credentials Plugin （可选）</span><br><span class="line">5. build-name-setter：用于修改Build名称 （可选）</span><br><span class="line">6. description setter plugin：用于在修改Build描述信息，在描述信息中增加显示QRCode（二维码）（可选）</span><br><span class="line">7. Post-Build Script Plug-in：在编译完成后通过执行脚本实现一些额外功能 （可选）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>系统管理 -&gt; 系统设置将     Subversion Workspace Version 设置为1.7</p>
+</li>
+<li><p>系统管理 -&gt; Keychains and Provisioning Profiles Management -&gt; 上传 keychain &amp; mobileprovision</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">注意 :</span><br><span class="line">1. 这里keychain 是将p12文件直接改后缀名为keychain (a.p12 -&gt; a.keychain)</span><br><span class="line">2. mobileprovision 的 Provisioning Profiles Directory Path 设置为 $&#123;PROVISIONING_PROFILE&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>新建 -&gt; 一个自由风格的项目 -&gt; <code>DEMO_V1.0_UAT</code></li>
+</ul>
+<p>配置项目:</p>
+<ul>
+<li>General -&gt; 丢弃旧的构建</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 保持构建的天数 -&gt; 10</span><br><span class="line">2. 保持构建的最大个数 -&gt; 15</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>源码管理 -&gt; Subversion</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. Repository URL -&gt; SVN Path</span><br><span class="line">2. Credentials -&gt; 添加SVN账户,密码,描述</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构建环境 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. Keychains and Code Signing Identities</span><br><span class="line">2. Mobile Provisioning Profiles</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>构建 -&gt; Execute shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;package&apos; | sudo -S xcode-select --switch /Applications/Xcode8.2.app/Contents/Developer</span><br><span class="line">unzip -o $WORKSPACE/3party/ZIP/XX.zip -d $WORKSPACE/3party/ZIP/</span><br><span class="line">nowtime=`date +%Y%m%d%H`</span><br><span class="line">/usr/libexec/PlistBuddy -c &quot;Set:CFBundleVersion $nowtime&quot; $WORKSPACE/DEMO/Info.plist</span><br><span class="line">/usr/libexec/PlistBuddy -c &quot;Set:CFBundleDisplayName DEMO UAT 1.0&quot; $WORKSPACE/DEMO/Info.plist</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>构建 -&gt; Xcode -&gt; General build setting </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. Target -&gt; (输入项目的Target)</span><br><span class="line">2. Setting -&gt; 勾选 Clean before build?</span><br><span class="line">3. Configuration -&gt; Release</span><br><span class="line">4. .ipa filename pattern -&gt; XX_IOS_$&#123;JOB_NAME&#125;_$&#123;VERSION&#125;</span><br><span class="line">5. Output directory -&gt; $WORKSPACE/build_outputs/$&#123;BUILD_TAG&#125;</span><br><span class="line">6. Manifest Plist URL -&gt; $WORKSPACE/build_outputs/$&#123;BUILD_TAG&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>如果项目使用cocoapods,需要配置 Advanced Xcode build options </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. Xcode Schema File -&gt; (Schema的名字)</span><br><span class="line">2. SYMROOT -&gt;  $&#123;WORKSPACE&#125;/build</span><br><span class="line">3. Xcode Workspace File -&gt; (Workspace的名字)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>构建后操作  -&gt; Archive the artifacts </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 用于存档的文件 -&gt; build_outputs/$&#123;BUILD_TAG&#125;/*.ipa,build_outputs/$&#123;BUILD_TAG&#125;/*.plist</span><br><span class="line">2. 高级设置 -&gt; 选择1，2，4，5</span><br></pre></td></tr></table></figure>
+<h2 id="安全设置"><a href="#安全设置" class="headerlink" title="安全设置"></a>安全设置</h2><p>系统管理 -&gt; Configure Global Security</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 安全域 -&gt; 勾选（Jenkins专有用户数据库） -&gt; 允许用户注册</span><br><span class="line">2. 授权策略 -&gt; 勾选（项目矩阵授权策略）-&gt; 添加用户 (1. 管理员账户 全部勾选 2. 匿名用户 勾选 Read)</span><br><span class="line">3. 在项目配置文件中 -&gt; General -&gt; 启用项目安全 -&gt; 添加用户</span><br></pre></td></tr></table></figure>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">wenbobao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://blog.wenbobao.cn/2016/04/11/iOS_Jenkins_SVN自动化打包配置/">http://blog.wenbobao.cn/2016/04/11/iOS_Jenkins_SVN自动化打包配置/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Jenkins/">Jenkins</a></div></article><nav id="pagination"><div class="prev-post pull-left"><a href="/2016/08/17/2016-08-17/"><i class="fa fa-chevron-left">  </i><span>远程启动jboss,关闭窗口,jboss自动关闭</span></a></div><div class="next-post pull-right"><a href="/2016/03/11/给iOS应用增加3DTouch功能/"><span>给iOS应用增加3DTouch功能</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var disqus_config = function () {
+  this.page.url = 'http://blog.wenbobao.cn/2016/04/11/iOS_Jenkins_SVN自动化打包配置/';
+  this.page.identifier = '2016/04/11/iOS_Jenkins_SVN自动化打包配置/';
+  this.page.title = 'iOS + Jenkins + SVN 自动化打包配置';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://wenbobao.disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-src" src="https://wenbobao.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2014 - 2017 By wenbobao</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.3"></script><script src="/js/fancybox.js?version=1.3"></script><script src="/js/sidebar.js?version=1.3"></script><script src="/js/copy.js?version=1.3"></script><script src="/js/fireworks.js?version=1.3"></script><script src="/js/transition.js?version=1.3"></script><script src="/js/scroll.js?version=1.3"></script><script src="/js/head.js?version=1.3"></script></body></html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="cocoapods最新安装教程"><meta name="keywords" content="cocoapods"><meta name="author" content="wenbobao,undefined"><meta name="copyright" content="wenbobao"><title>cocoapods最新安装教程 | wenbobao's blog</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css?version=1.3"><script>var GLOBAL = { 
+  root: '/',
+  algolia: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  localSearch: undefined
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是CocoaPods？"><span class="toc-number">1.</span> <span class="toc-text">什么是CocoaPods？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装ruby环境"><span class="toc-number">2.</span> <span class="toc-text">安装ruby环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何下载和安装CocoaPods？"><span class="toc-number">3.</span> <span class="toc-text">如何下载和安装CocoaPods？</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="http://owik45kut.bkt.clouddn.com/hexo_avatar.jpg"></div><div class="author-info__name text-center">wenbobao</div><div class="author-info__description text-center">如果我们想的都是欢乐的念头，我们就能欢乐。</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">14</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">34</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container" style="background-image: url(true);"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">wenbobao's blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">cocoapods最新安装教程</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2015-03-11</time><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2015/03/11/cocoapods最新安装教程/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2015/03/11/cocoapods最新安装教程/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">603</span><span class="post-meta__separator">|</span><span>Reading time: 2 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div id="post-content"><p>最新安装CocoaPods命令:</p>
+<ol>
+<li>sudo gem update –system </li>
+<li>gem -v</li>
+<li>gem sources –remove <a href="https://rubygems.org/" target="_blank" rel="noopener">https://rubygems.org/</a></li>
+<li>gem sources –add <a href="https://gems.ruby-china.org/" target="_blank" rel="noopener">https://gems.ruby-china.org/</a></li>
+<li>gem sources –remove <a href="https://ruby.taobao.org/" target="_blank" rel="noopener">https://ruby.taobao.org/</a> </li>
+<li>gem sources -l</li>
+<li>sudo gem install cocoapods</li>
+<li>pod setup</li>
+</ol>
+<p>CocoaPods命令:</p>
+<ol>
+<li>pod install –verbose –no-repo-update</li>
+<li>pod update –verbose –no-repo-update</li>
+</ol>
+<h1 id="什么是CocoaPods？"><a href="#什么是CocoaPods？" class="headerlink" title="什么是CocoaPods？"></a>什么是CocoaPods？</h1><p>当你开发iOS应用时，会经常使用到很多第三方开源类库，比如JSONKit，AFNetWorking等等。可能某个类库又用到其他类库，所以要使用它，必须得另外下载其他类库，而其他类库又用到其他类库，“子子孙孙无穷尽也”，这也许是比较特殊的情况。手动一个个去下载所需类库十分麻烦。另外一种常见情况是，你项目中用到的类库有更新，你必须得重新下载新版本，重新加入到项目中，十分麻烦。</p>
+<p>CocoaPods是一个用来帮助我们管理第三方依赖库的工具。它可以解决库与库之间的依赖关系，下载库的源代码，同时通过创建一个Xcode的workspace来将这些第三方库和我们的工程连接起来，供我们开发使用。</p>
+<h1 id="安装ruby环境"><a href="#安装ruby环境" class="headerlink" title="安装ruby环境"></a>安装ruby环境</h1><p>在安装CocoaPods之前，首先要在本地安装好Ruby环境。幸运的事MAC自带ruby环境。<br>终端执行:<br>ruby -v<br><img src="http://7xrifx.com1.z0.glb.clouddn.com/16-10-20/39160485.jpg" alt=""></p>
+<p>CocoaPods是以Ruby gem包的形式被安装的。<br>查看gem版本<br>gem -v<br><img src="http://7xrifx.com1.z0.glb.clouddn.com/16-10-20/74944192.jpg" alt=""></p>
+<p>注：建议gem更新到最新版本，版本过低会影响<br>升级gem：<br>sudo gem update –system<br><img src="http://7xrifx.com1.z0.glb.clouddn.com/16-10-20/97301059.jpg" alt=""><br>升级后查看gem版本<br><img src="http://7xrifx.com1.z0.glb.clouddn.com/16-10-20/81545029.jpg" alt=""></p>
+<h1 id="如何下载和安装CocoaPods？"><a href="#如何下载和安装CocoaPods？" class="headerlink" title="如何下载和安装CocoaPods？"></a>如何下载和安装CocoaPods？</h1><p>安装好Ruby环境后在终端执行:</p>
+<p>sudo gem install cocoapods</p>
+<p>在终端中敲入这个命令之后，会发现半天没有任何反应。因为cocoapods.org被墙了。</p>
+<p>我们可以用淘宝的Ruby镜像来访问cocoapods，执行下面的命令</p>
+<p>gem sources –remove <a href="https://rubygems.org/" target="_blank" rel="noopener">https://rubygems.org/</a></p>
+<p>gem sources –add <a href="https://ruby.taobao.org/" target="_blank" rel="noopener">https://ruby.taobao.org/</a></p>
+<p>为了验证你的Ruby镜像是并且仅是taobao，可以用以下命令查看:</p>
+<p>gem sources -l</p>
+<p>只有在终端中出现下面文字才表明你上面的命令是成功的：<br><img src="http://7xrifx.com1.z0.glb.clouddn.com/16-10-20/66595190.jpg" alt=""></p>
+<p>这时候，你再次在终端中运行：</p>
+<p>sudo gem install cocoapods</p>
+<p>等上十几秒钟，CocoaPods就可以安装完毕。</p>
+<p>2016年10月更新:<br> 由于Ruby TaoBao不在更新维护 , RubyGems镜像的管理工作以后将交由 Ruby China 负责，我们需要将RubyGems source 切换到 Ruby China。</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">wenbobao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://blog.wenbobao.cn/2015/03/11/cocoapods最新安装教程/">http://blog.wenbobao.cn/2015/03/11/cocoapods最新安装教程/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/cocoapods/">cocoapods</a></div></article><nav id="pagination"><div class="prev-post pull-left"><a href="/2015/05/16/sqlite常用命令查询/"><i class="fa fa-chevron-left">  </i><span>sqlite常用命令查询</span></a></div><div class="next-post pull-right"><a href="/2015/02/07/记录下Xcode好用的插件/"><span>记录下Xcode好用的插件</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var disqus_config = function () {
+  this.page.url = 'http://blog.wenbobao.cn/2015/03/11/cocoapods最新安装教程/';
+  this.page.identifier = '2015/03/11/cocoapods最新安装教程/';
+  this.page.title = 'cocoapods最新安装教程';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://wenbobao.disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-src" src="https://wenbobao.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2014 - 2017 By wenbobao</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.3"></script><script src="/js/fancybox.js?version=1.3"></script><script src="/js/sidebar.js?version=1.3"></script><script src="/js/copy.js?version=1.3"></script><script src="/js/fireworks.js?version=1.3"></script><script src="/js/transition.js?version=1.3"></script><script src="/js/scroll.js?version=1.3"></script><script src="/js/head.js?version=1.3"></script></body></html>
