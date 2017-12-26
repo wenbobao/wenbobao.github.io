@@ -1,0 +1,86 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="给iOS应用增加3DTouch功能"><meta name="keywords" content="3DTouch"><meta name="author" content="wenbobao,undefined"><meta name="copyright" content="wenbobao"><title>给iOS应用增加3DTouch功能 | wenbobao's blog</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css?version=1.3"><script>var GLOBAL = { 
+  root: '/',
+  algolia: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  localSearch: undefined
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3D-Touch-的主要应用"><span class="toc-number">1.</span> <span class="toc-text">3D Touch 的主要应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3D-Touch-的三大模块"><span class="toc-number">2.</span> <span class="toc-text">3D Touch 的三大模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Home-Screen-Quick-Action使用与相关api详解"><span class="toc-number">3.</span> <span class="toc-text">Home Screen Quick Action使用与相关api详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#静态标签"><span class="toc-number">3.1.</span> <span class="toc-text">静态标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态标签"><span class="toc-number">3.2.</span> <span class="toc-text">动态标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="http://owik45kut.bkt.clouddn.com/hexo_avatar.jpg"></div><div class="author-info__name text-center">wenbobao</div><div class="author-info__description text-center">如果我们想的都是欢乐的念头，我们就能欢乐。</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">14</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">34</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container" style="background-image: url(true);"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">wenbobao's blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">给iOS应用增加3DTouch功能</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2016-03-11</time><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2016/03/11/给iOS应用增加3DTouch功能/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2016/03/11/给iOS应用增加3DTouch功能/"></span></a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">830</span><span class="post-meta__separator">|</span><span>Reading time: 3 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div id="post-content"><h2 id="3D-Touch-的主要应用"><a href="#3D-Touch-的主要应用" class="headerlink" title="3D Touch 的主要应用"></a>3D Touch 的主要应用</h2><ol>
+<li>A user can now press your Home screen icon to immediately access functionality provided by your app.</li>
+</ol>
+<h2 id="3D-Touch-的三大模块"><a href="#3D-Touch-的三大模块" class="headerlink" title="3D Touch 的三大模块"></a>3D Touch 的三大模块</h2><ol>
+<li>Home Screen Quick Actions</li>
+<li>peek and pop</li>
+<li><p>Force Properties</p>
+<h2 id="Home-Screen-Quick-Action使用与相关api详解"><a href="#Home-Screen-Quick-Action使用与相关api详解" class="headerlink" title="Home Screen Quick Action使用与相关api详解"></a>Home Screen Quick Action使用与相关api详解</h2><p> iOS9为我们提供了两种屏幕标签，分别是静态标签和动态标签。 </p>
+</li>
+</ol>
+<h3 id="静态标签"><a href="#静态标签" class="headerlink" title="静态标签"></a>静态标签</h3><pre><code>所谓静态快捷方式，就是在应用安装前预先设置好的不能够改变的菜单项，它的设置方式是在 Info.plist 里面添加一个 UIApplicationShortcutItems 字段(系统没有提示，只能手打上去),如下图
+</code></pre><p><img src="http://ww2.sinaimg.cn/large/65b80fc9jw1f1w6we9mayj20we08itc6.jpg" alt=""></p>
+<p>UIApplicationShortcutItems 为数组类型，里面的每一个数组项代表快捷菜单上面的一个菜单项。</p>
+<p>每一个菜单项都有下面几个属性。示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;dict&gt;</span><br><span class="line">	&lt;key&gt;UIApplicationShortcutItemIconType&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;UIApplicationShortcutIconTypeAudio&lt;/string&gt;</span><br><span class="line">	&lt;key&gt;UIApplicationShortcutItemTitle&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;音乐&lt;/string&gt;</span><br><span class="line">	&lt;key&gt;UIApplicationShortcutItemType&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;$(PRODUCT_BUNDLE_IDENTIFIER).First&lt;/string&gt;</span><br><span class="line">	&lt;key&gt;UIApplicationShortcutItemUserInfo&lt;/key&gt;</span><br><span class="line">	&lt;dict&gt;</span><br><span class="line">		&lt;key&gt;firstShorcutKey1&lt;/key&gt;</span><br><span class="line">		&lt;string&gt;firstShortcutKeyValue1&lt;/string&gt;</span><br><span class="line">	&lt;/dict&gt;</span><br><span class="line">&lt;/dict&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>（必须）UIApplicationShortcutItemType：这个选项表示这个菜单项的唯一标识。</p>
+</li>
+<li><p>（必须）UIApplicationShortcutItemTitle：这个选项表示菜单项显示的标题。</p>
+</li>
+<li><p>（可选）UIApplicationShortcutItemSubtitle：这个表示菜单项的子标题。</p>
+</li>
+<li><p>（可选）UIApplicationShortcutItemIconType：这个属性表示菜单的图标，系统自带的图标。</p>
+</li>
+<li><p>（可选）UIApplicationShortcutItemIconFile：这个属性表示菜单图标的文件名，可以使用自定义的图标。</p>
+</li>
+<li><p>（可选）UIApplicationShortcutItemUserInfo：这个代表了菜单项点击后，传入的用户信息，也是可选的。</p>
+</li>
+</ul>
+<p>效果如下:</p>
+<p><img src="http://ww3.sinaimg.cn/large/65b80fc9jw1f1w705k3ybj20i80gogn3.jpg" alt=""></p>
+<h3 id="动态标签"><a href="#动态标签" class="headerlink" title="动态标签"></a>动态标签</h3><p>动态标签是我们在程序中，通过代码添加的，与之相关的类，主要有三个：</p>
+<p>UIApplicationShortcutItem  创建3DTouch标签的类</p>
+<p>UIMutableApplicationShortcutItem 创建可变的3DTouch标签的类</p>
+<p>UIApplicationShortcutIcon 创建标签中图片Icon的类</p>
+<p>3、响应标签的行为</p>
+<p>类似推送，当我们点击标签进入应用程序时，也可以进行一些操作，我们可以看到，在applocation中增加了这样一个方法： </p>
+<ul>
+<li>( void )application:( UIApplication <em>)application performActionForShortcutItem:(UIApplicationShortcutItem </em>)shortcutItem completionHandler:( void (^)( BOOLsucceeded))completionHandler NS_AVAILABLE_IOS ( 9 _0);</li>
+</ul>
+<p>当我们通过标签进入app时，就会在appdelegate中调用这样一个回调，我们可以获取shortcutItem的信息进行相关逻辑操作。</p>
+<p>这里有一点需要注意：我们在app的入口函数：</p>
+<ul>
+<li>( BOOL )application:( UIApplication <em>)application didFinishLaunchingWithOptions:( NSDictionary </em>)launchOptions;</li>
+</ul>
+<p>也需要进行一下判断，在launchOptions中有UIApplicationLaunchOptionsShortcutItemKey这样一个键，通过它，我们可以区别是否是从标签进入的app，如果是则处理结束逻辑后，返回NO，防止处理逻辑被反复回调。</p>
+<p>几点注意：</p>
+<p>1、快捷标签最多可以创建四个，包括静态的和动态的。</p>
+<p>2、每个标签的题目和icon最多两行，多出的会用…省略</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://developer.apple.com/ios/3d-touch/" target="_blank" rel="noopener">苹果官方文档</a></li>
+<li><a href="http://www.jianshu.com/p/2920d2f74fb4" target="_blank" rel="noopener">iOS9 3D touch 适配开发</a></li>
+<li><a href="http://www.cocoachina.com/ios/20151019/13812.html" target="_blank" rel="noopener">iOS 9 新特性之实现 3D Touch 就是 So easy</a></li>
+<li><a href="http://my.oschina.net/SoulJa/blog/525680" target="_blank" rel="noopener">iOS 3D Touch功能</a></li>
+<li><a href="http://www.cocoachina.com/ios/20151021/13849.html" target="_blank" rel="noopener">在iPhone上使用3D Touch</a></li>
+<li><a href="http://blog.csdn.net/showhilllee/article/details/48376073" target="_blank" rel="noopener">iOS9 3DTouch、ShortcutItem、Peek And Pop技术一览</a></li>
+<li><a href="http://blog.csdn.net/liwenjie0912/article/details/49178873" target="_blank" rel="noopener"> iOS 3D Touch (UIApplicationShortcutItem、UIViewControllerPreviewing、UIPreviewAction)</a></li>
+<li><a href="http://www.it165.net/pro/html/201510/54990.html" target="_blank" rel="noopener">iOS 指压即达 如何集成iOS9里的3D Touch</a></li>
+<li><a href="http://blog.devzeng.com/blog/ios9-3d-touch.html" target="_blank" rel="noopener">在iOS9中使用3D Touch</a></li>
+<li><a href="http://www.jianshu.com/p/3443a3b27b2d" target="_blank" rel="noopener">iOS开发之3D Touch</a></li>
+<li><a href="http://www.jianshu.com/p/c32d286c1bf7" target="_blank" rel="noopener">iOS9 新特征之3D Touch实现</a></li>
+<li><a href="http://www.jianshu.com/p/ab9c6b09cb66" target="_blank" rel="noopener">3D Touch</a></li>
+<li><a href="http://www.07net01.com/program/2016/01/1196145.html" target="_blank" rel="noopener">iOS 3D Touch开发tableview页面内的使用</a></li>
+<li><a href="http://www.ithao123.cn/content-10689481.html" target="_blank" rel="noopener">ios 3D Touch功能的实现</a></li>
+<li><a href="http://laurenz.io/2015/10/ios-9-uitableview-how-to-peek-and-pop-in-to-table-cells-with-3d-touch/" target="_blank" rel="noopener">iOS 9 UITableView – How to “Peek and Pop” in to table cells with 3D touch?</a></li>
+<li><a href="http://useyourloaf.com/blog/3d-touch-peek-and-pop/" target="_blank" rel="noopener">3D Touch Peek and Pop</a></li>
+<li><a href="http://code.tutsplus.com/tutorials/ios-9-an-introduction-to-3d-touch--cms-25115" target="_blank" rel="noopener">iOS 9: An Introduction to 3D Touch</a></li>
+</ol>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">wenbobao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://blog.wenbobao.cn/2016/03/11/给iOS应用增加3DTouch功能/">http://blog.wenbobao.cn/2016/03/11/给iOS应用增加3DTouch功能/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/3DTouch/">3DTouch</a></div></article><nav id="pagination"><div class="prev-post pull-left"><a href="/2016/04/11/Jenkins/"><i class="fa fa-chevron-left">  </i><span>iOS + Jenkins + SVN 自动化打包配置</span></a></div><div class="next-post pull-right"><a href="/2016/03/11/iOS给图片添加水印/"><span>iOS给图片添加水印</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var disqus_config = function () {
+  this.page.url = 'http://blog.wenbobao.cn/2016/03/11/给iOS应用增加3DTouch功能/';
+  this.page.identifier = '2016/03/11/给iOS应用增加3DTouch功能/';
+  this.page.title = '给iOS应用增加3DTouch功能';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://wenbobao.disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-src" src="https://wenbobao.disqus.com/count.js" async></script></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2014 - 2017 By wenbobao</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.3"></script><script src="/js/fancybox.js?version=1.3"></script><script src="/js/sidebar.js?version=1.3"></script><script src="/js/copy.js?version=1.3"></script><script src="/js/fireworks.js?version=1.3"></script><script src="/js/transition.js?version=1.3"></script><script src="/js/scroll.js?version=1.3"></script><script src="/js/head.js?version=1.3"></script></body></html>
